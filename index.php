@@ -45,7 +45,7 @@
 							<li>Login via ssh with the key you used to start your instance and username 'ubuntu' i.e. 
 							<br/><code>ssh -i mykey.pem ubuntu@<?=$_SERVER['HTTP_HOST']?></code>
 							</li>
-							<li>Run the following command: <br/><code>sudo elastrix-setup</code>
+							<li>Run the following command: <br/><code>sudo elastrix -s</code>
 								<ol>
 									<li>Create a Webmin user you can login to <a target="_blank" href="https://<?=$_SERVER['HTTP_HOST']?>:10000">Webmin</a> admin with. Please be sure your EC2 security group includes port <strong>10000 inbound TCP</strong>. Please note you will need to accept the certificate since it is self signed initially.
 									<li>Update your root MySQL password.</li>
