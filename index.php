@@ -24,7 +24,7 @@
 			<header id="header">
 					<h1 class="logo">
 					<a href="http://elastrix.io" target="_blank">
-						Elastrix
+					<img src="http://elastrix.io/content/images/2015/09/elastrix-logo-white.png" style="width:98%;"/>
 					</a>
 					</h1>
 				<h1><a href="#kurento"><strong>Kurento</strong></a> with <a href="#nginx">NGINX</a> and Webmin<br />
@@ -49,17 +49,19 @@
 							<li>Login via ssh with the key you used to start your instance and username 'ubuntu' i.e. 
 							<br/><code>ssh -i mykey.pem ubuntu@<?=$_SERVER['HTTP_HOST']?></code>
 							</li>
-							<li>Run the following command: <br/><code>sudo ./setup.sh</code>
+							<li>Run the following command: <br/><code>sudo elx -s</code>
 								<ol>
 									<li>Create a Webmin user you can login to <a target="_blank" href="https://<?=$_SERVER['SERVER_NAME']?>:10000">Webmin</a> admin with.
 									<li>Update your root MySQL password.</li>
+									<li>Configure the Turn Server</li>
+									<li>Configure Kurento</li>
 								</ol>
 							</li>
 						</ul>
 						<p>That's it! Your instance is ready to use!</p>
 						<ul class="actions">
 							<li><a href="mailto:support@elastrix.io?subject=EMS Support Request" target="_blank" class="button">Get Support</a></li>
-							<li><a href="https://<?=$_SERVER['SERVER_NAME'];?>:10000" target="_blank" class="button">Webmin</a></li>
+							<li><a href="https://<?=$_SERVER['HTTP_HOST'];?>:10000" target="_blank" class="button">Webmin</a></li>
 							<li><a href="http://www.kurento.org/docs/" target="_blank" class="button">Kurento Docs</a></li>
                 <li><a href="http://manpages.ubuntu.com/manpages/trusty/man1/turnserver.1.html" target="_blank" class="button
 ">Turn Server Manual</a></li>
