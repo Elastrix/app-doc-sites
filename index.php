@@ -83,7 +83,7 @@ Kurento is very modular, so you can easily extend it with your own applications,
 There is a preconfigured tutorial located as the default NGINX site available in <code>~/webroot/kurento</code>. After you run setup.sh you can access it at your root server url and begin immediately!
 			</p>
 			<p>
-			The Elastrix Media Server also includes a built in Turnserver for NAT traversal. There isn't much you have to do here unless you want to customize the ports and authentication. The <code>~./setup.sh</code> application will walk you through configuring everything in terms of updating the host and authentication. If you want to further customize the turnserver configuration you can directly edit <code>/etc/turnserver.conf</code> and <code>/etc/turnuserdb.conf</code>. If you want to change the authentication, or further customize, please see the manual by running the following command <code>man turnserver</code>.
+			The Elastrix Media Server also includes a built in Turnserver for NAT traversal. There isn't much you have to do here unless you want to customize the ports and authentication. The <code>~elx -s</code> application will walk you through configuring everything. If you want to further customize of the turnserver configuration you can directly edit <code>/etc/turnserver.conf</code> and <code>/etc/turnuserdb.conf</code>. If you want to change the authentication, or further customize, please see the manual by running the following command <code>man turnserver</code>.
 			</p>
 		</article>
 	</div>
@@ -94,18 +94,18 @@ There is a preconfigured tutorial located as the default NGINX site available in
                                                 <div class="row">
                                                         <article>
                                                                 <p>
-You can use the <code>nginx_modsite.sh</code> script to easily list, enable, and disable NGINX sites (like this one).
+You can use<code>elx -x</code> to easily list, enable, and disable NGINX sites (like this one).
                                                                 </p>
 <h2>How it Works</h2>
                                                                 <pre>
 # To list all the sites
-$ sudo nginx_modsite -l
+$ sudo elx -x 
 
-# To enable site "test_website"
-$ sudo nginx_modsite -e test_website
+# To enable site "default"
+$ sudo elx -x enable default
 
-# To disable site "test_website"
-$ sudo nginx_modsite -d test_website
+# To disable site "elastrix"
+$ sudo elx -x disable elastrix
 </pre>
                                                                 <p>
 
