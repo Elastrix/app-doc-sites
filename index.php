@@ -23,10 +23,10 @@
 						<img src="http://elastrix.io/content/images/2015/09/elastrix-logo-white.png" style="width:98%;"/>
 					</a>
 					</h1>
-				<h1><strong>LAMP</strong> with Webmin<br />
-				Ubuntu 14.04, Apache2, MySQL 5.5 and PHP 5<br/>
-				with Webmin included for administration.<br />
-				crafted by <a href="http://elastrix.io" target="_blank">Elastrix</a>.</h1>
+				<h1><strong>Magento LAMP</strong> with Webmin<br />
+				Ubuntu 14.04, Magento 2.0, Apache2, <br/>MySQL 5.5 and PHP 5
+			<br/>with Webmin included for administration.
+			<br/>Hand crafted by <a href="http://elastrix.io" target="_blank">Elastrix</a>.</h1>
 			</header>
 
 		<!-- Main -->
@@ -37,10 +37,10 @@
 						<header class="major">
 							<h2>Congratulations! Your App is ready to go!</h2>
 						</header>
-						<p>Our battle tested, scablable and performance tweaked LAMP stack is perfect for development all the way to product ready 
-						applications and websites. 
-						It features Ubuntu 14.04, Apache2 with mod_rewrite and file upload limit increases as well as sendmail for sending email from your instance. 
+						<p>Our battle tested, scablable and performance tweaked Magento LAMP stack is perfect for development all the way to product ready stores. 
+						It features Ubuntu 14.04, Magento 2.0, Apache2 with mod_rewrite and file upload limit increases as well as sendmail for sending email from your instance. 
 						It also includes MySQL 5 and PHP5 with Webmin pre-installed and configured for full service and easy server administration from your browser.</p>
+						<h2>1. Setup Environment</h2>
 						<ol>
 							<li>Login via ssh with the key you used to start your instance and username 'ubuntu' i.e. 
 							<br/><code>ssh -i mykey.pem ubuntu@<?=$_SERVER['HTTP_HOST']?></code>
@@ -54,7 +54,20 @@
 							<li><code>sudo elx -u [ update webmin user ]</code></li>
 							<li><code>sudo elx -m [ update mysql root pass ]</code></li>
 							<li><code>sudo elx -a [ optimize apache ]</code></li>
+						</ul>
+						<h2>2. Enable Magento</h2>
+						<p>Execute the following commands from the command line while ssh'd into your EC2 machine.</p>
 						<ul>
+							<li><code>sudo a2dissite 000-default && sudo a2ensite magento</code></li>
+							<li><code>sudo service apache2 reload</code></li>
+						</ul>
+						<h2>3. Setup/Configure Magento (Optional)</h2>
+						<ul>
+							<li>Visit <a href="http://<?=$_SERVER['HTTP_HOST'];?>/setup">http://<?=$_SERVER['HTTP_HOST'];?>/setup</a> to get started</li>
+							<li>Configure extentions and modules with the <code>magento</code> command line tool (Optional)</li>
+							<li>Update/Upgrade with <code>composer</code> from the <code>~/webroot/magento</code> directory (Optional)</li>
+							<li>You can setup your magento connect authentication keys in <code>~/.composer/auth.json</code></li>
+						</ul>
 						<br/><br/>
 						<ul class="actions">
 							<li><a href="mailto:support@elastrix.io?subject=LAMP Webmin Support Request" target="_blank" class="button">Get Support</a></li>
