@@ -23,9 +23,9 @@
 						<img src="http://elastrix.io/content/images/2015/09/elastrix-logo-white.png" style="width:98%;"/>
 					</a>
 					</h1>
-				<h1><strong>LAMP</strong> with Webmin<br />
-				Ubuntu 14.04, Apache2, MySQL 5.5 and PHP 5<br/>
-				with Webmin included for administration.<br />
+				<h1><strong>Drupal 8 LAMP</strong> with Webmin<br />
+				Ubuntu 14.04, Apache2, Drupal 8, MySQL 5.5 <br/>and PHP 5
+				with Webmin <br/>included for administration.<br />
 				crafted by <a href="http://elastrix.io" target="_blank">Elastrix</a>.</h1>
 			</header>
 
@@ -54,8 +54,21 @@
 							<li><code>sudo elx -u [ update webmin user ]</code></li>
 							<li><code>sudo elx -m [ update mysql root pass ]</code></li>
 							<li><code>sudo elx -a [ optimize apache ]</code></li>
-						<ul>
-						<br/><br/>
+						</ul>
+
+<h2>Drupal Setup</h2>
+<p>
+To enable your Drupal site after setup simply run:<br/>
+   <code>sudo a2dissite 000-default && sudo a2ensite drupal && sudo service apache2 reload</code>
+This command will enable the drupal site. Then visit <strong><?=$_SERVER['HTTP_HOST']?></strong> to begin the drupal setup.
+Note your MySQL credentials from above, during the database step you will use them (the database is already created):
+     <blockquote>
+     database: drupal<br/>
+     username: root<br/>
+     password: YOUR_ROOT_PASSWORD
+    </blockquote>
+</p>					
+
 						<ul class="actions">
 							<li><a href="mailto:support@elastrix.io?subject=LAMP Webmin Support Request" target="_blank" class="button">Get Support</a></li>
 							<li><a href="http://www.elastrix.io/lamp-webmin" target="_blank" class="button">Documentation</a></li>
