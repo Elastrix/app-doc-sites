@@ -23,8 +23,8 @@
 						<img src="http://elastrix.io/content/images/2015/09/elastrix-logo-white.png" style="width:98%;"/>
 					</a>
 					</h1>
-				<h1><strong>LAMP</strong> with Webmin<br />
-				Ubuntu 14.04, Apache2, MySQL 5.5 and PHP 5<br/>
+				<h1><strong>Meteor</strong> with Webmin<br />
+				Ubuntu 14.04, NGINX, Meteor 1.2.1 and MongoDB<br/>
 				with Webmin included for administration.<br />
 				crafted by <a href="http://elastrix.io" target="_blank">Elastrix</a>.</h1>
 			</header>
@@ -37,10 +37,10 @@
 						<header class="major">
 							<h2>Congratulations! Your App is ready to go!</h2>
 						</header>
-						<p>Our battle tested, scablable and performance tweaked LAMP stack is perfect for development all the way to product ready 
+						<p>Our battle tested, scablable and performance tweaked Meteor stack is perfect for development all the way to product ready 
 						applications and websites. 
-						It features Ubuntu 14.04, Apache2 with mod_rewrite and file upload limit increases as well as sendmail for sending email from your instance. 
-						It also includes MySQL 5 and PHP5 with Webmin pre-installed and configured for full service and easy server administration from your browser.</p>
+						It features Ubuntu 14.04, NGINX, and Meteor fully configured, as well as sendmail for sending email from your instance. 
+						It also includes MongoDB and Node.js with Webmin pre-installed and configured for full service and easy server administration from your browser.</p>
 						<ol>
 							<li>Login via ssh with the key you used to start your instance and username 'ubuntu' i.e. 
 							<br/><code>ssh -i mykey.pem ubuntu@<?=$_SERVER['HTTP_HOST']?></code>
@@ -52,51 +52,25 @@
 						You can use the elx command to re-run setup or control various aspects of your instance:</p>
 						<ul>
 							<li><code>sudo elx -u [ update webmin user ]</code></li>
-							<li><code>sudo elx -m [ update mysql root pass ]</code></li>
-							<li><code>sudo elx -a [ optimize apache ]</code></li>
-						<ul>
+						</ul>
+Work with the Meteor Upstart Service:<br/>
+<code>start meteor-app</code>
+<code>stop meteor-app</code>
+<code>status meteor-app</code>
+<br/>
+The Meteor source should be in /home/ubuntu/meteor/bundle. The main.js file is what is served through upstart/nginx.
+To configure your own domain name on SSL, you will need to add your certificates to <code>/etc/nginx/ssl</code>. If you
+just replace the ones that are in there (nginx.crt/key) everything will continue to function. You should update the <code>/etc/nginx/sites-available/meteor</code>
+server_name directive to reflect your domain name. Then restart <code>restart meteor-app</code>.
 						<br/><br/>
 						<ul class="actions">
-							<li><a href="mailto:support@elastrix.io?subject=LAMP Webmin Support Request" target="_blank" class="button">Get Support</a></li>
-							<li><a href="http://www.elastrix.io/lamp-webmin" target="_blank" class="button">Documentation</a></li>
+							<li><a href="mailto:support@elastrix.io?subject=Meteor" target="_blank" class="button">Get Support</a></li>
+							<li><a href="http://www.elastrix.io/lemp" target="_blank" class="button">Documentation</a></li>
 							<li><a href="info.php" target="_blank" class="button">PHP Info</a></li>
 							<li><a href="https://<?=$_SERVER['HTTP_HOST'];?>:10000" target="_blank" class="button">Webmin</a></li>
 						</ul>
 					</section>
 
-					<section id="two">
-						<h2>Apache2</h2>
-						<div class="row">
-							<article>
-								<p>
-									Ubuntu's Apache2 default configuration is different from the upstream default configuration, and split into several files optimized for interaction with Ubuntu tools. The configuration system is fully documented in /usr/share/doc/apache2/README.Debian.gz. Refer to this for the full documentation. Documentation for the web server itself can be found by accessing the manual if the apache2-doc package was installed on this server.
-									The configuration layout for an Apache2 web server installation on Ubuntu systems is as follows:
-								</p>
-								<pre>
-/etc/apache2/
-|-- apache2.conf
-|       `--  ports.conf
-|-- mods-enabled
-|       |-- *.load
-|       `-- *.conf
-|-- conf-enabled
-|       `-- *.conf
-|-- sites-enabled
-|       `-- *.conf
-								</pre>
-								<p>        
-									<strong>apache2.conf</strong> is the main configuration file. It puts the pieces together by including all remaining configuration files when starting up the web server.
-									<br/>
-									<strong>ports.conf</strong> is always included from the main configuration file. It is used to determine the listening ports for incoming connections, and this file can be customized anytime.
-									<br/>
-									Configuration files in the <strong>mods-enabled/, conf-enabled/ and sites-enabled/</strong> directories contain particular configuration snippets which manage modules, global configuration fragments, or virtual host configurations, respectively.
-									They are activated by symlinking available configuration files from their respective *-available/ counterparts. These should be managed by using our helpers a2enmod, a2dismod, a2ensite, a2dissite, and a2enconf, a2disconf . See their respective man pages for detailed information.
-									<br/>
-									The binary is called <strong>apache2</strong>. Due to the use of environment variables, in the default configuration, apache2 needs to be started/stopped with <strong>/etc/init.d/apache2</strong> or <strong>apache2ctl</strong>. 
-								</p>
-							</article>
-						</div>
-					</section>
 
 <section id="three">
 						<h2>More Apps</h2>
