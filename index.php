@@ -24,7 +24,7 @@
 					</a>
 					</h1>
 				<h1><strong>LAMP</strong> with Webmin<br />
-				Ubuntu 14.04, Apache2, MySQL 5.5 and PHP 5<br/>
+				Ubuntu 14.04, Jenkins 1.647, Apache2<br/>
 				with Webmin included for administration.<br />
 				crafted by <a href="http://elastrix.io" target="_blank">Elastrix</a>.</h1>
 			</header>
@@ -37,10 +37,9 @@
 						<header class="major">
 							<h2>Congratulations! Your App is ready to go!</h2>
 						</header>
-						<p>Our battle tested, scablable and performance tweaked LAMP stack is perfect for development all the way to product ready 
-						applications and websites. 
-						It features Ubuntu 14.04, Apache2 with mod_rewrite and file upload limit increases as well as sendmail for sending email from your instance. 
-						It also includes MySQL 5 and PHP5 with Webmin pre-installed and configured for full service and easy server administration from your browser.</p>
+						<p>Our battle tested, scablable and performance tweaked CI server is perfect for your continuous integration requirements.
+						It features Ubuntu 14.04, Jenkins 1.647, Apache2 proxy setup for easy access to Jenkinds via port 80.
+						It also includes Webmin pre-installed and configured for full service and easy server administration from your browser.</p>
 						<ol>
 							<li>Login via ssh with the key you used to start your instance and username 'ubuntu' i.e. 
 							<br/><code>ssh -i mykey.pem ubuntu@<?=$_SERVER['HTTP_HOST']?></code>
@@ -48,17 +47,17 @@
 							<li>Run the following command: <br/><code>sudo elx -s</code>
 							<br/>This will create a user you can use to login to Webmin with, as well as update your root MySQL password</li>
 						</ol>
-						<p>That's it! Your instance is ready to use!
-						You can use the elx command to re-run setup or control various aspects of your instance:</p>
-						<ul>
-							<li><code>sudo elx -u [ update webmin user ]</code></li>
-							<li><code>sudo elx -m [ update mysql root pass ]</code></li>
-							<li><code>sudo elx -a [ optimize apache ]</code></li>
-						<ul>
+<strong>To enable the Jenkins web site, just run:</strong>
+<ul>
+<li><code>sudo a2dissite 000-default</code></li>
+<li><code>sudo a2ensite jenkins</code></li>
+<li><code>sudo service apache2 reload</code></li>
+</ul>
+Your Jenkins site will then be available at this same URL.
 						<br/><br/>
 						<ul class="actions">
-							<li><a href="mailto:support@elastrix.io?subject=LAMP Webmin Support Request" target="_blank" class="button">Get Support</a></li>
-							<li><a href="http://www.elastrix.io/lamp-webmin" target="_blank" class="button">Documentation</a></li>
+							<li><a href="mailto:support@elastrix.io?subject=Jenkins Support Request" target="_blank" class="button">Get Support</a></li>
+							<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/Home" target="_blank" class="button">Jenkins WiKi</a></li>
 							<li><a href="info.php" target="_blank" class="button">PHP Info</a></li>
 							<li><a href="https://<?=$_SERVER['HTTP_HOST'];?>:10000" target="_blank" class="button">Webmin</a></li>
 						</ul>
