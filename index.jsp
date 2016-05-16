@@ -9,7 +9,9 @@
 		<title>Elastrix Apps</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300' rel='stylesheet' type='text/css'>
+<link href="http://vjs.zencdn.net/4.11/video-js.css" rel="stylesheet">
+  <script src="http://vjs.zencdn.net/4.11/video.js"></script>		
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300' rel='stylesheet' type='text/css'>
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
@@ -23,9 +25,8 @@
 						<img src="http://elastrix.io/content/images/2015/09/elastrix-logo-white.png" style="width:98%;"/>
 					</a>
 					</h1>
-				<h1><strong>LAMP</strong> with Webmin<br />
-				Ubuntu 14.04, Jenkins 1.647, Apache2<br/>
-				with Webmin included for administration.<br />
+				<h1><strong>Red5 Media Server</strong><br />
+				Ubuntu 14.04, Java 7, Red5 1.0.6<br/><br />
 				crafted by <a href="http://elastrix.io" target="_blank">Elastrix</a>.</h1>
 			</header>
 
@@ -37,67 +38,31 @@
 						<header class="major">
 							<h2>Congratulations! Your App is ready to go!</h2>
 						</header>
-						<p>Our battle tested, scablable and performance tweaked CI server is perfect for your continuous integration requirements.
-						It features Ubuntu 14.04, Jenkins 1.647, Apache2 proxy setup for easy access to Jenkinds via port 80.
-						It also includes Webmin pre-installed and configured for full service and easy server administration from your browser.</p>
+						<p>
+<video id="my_video_1" class="video-js vjs-default-skin" controls autoplay preload="auto" width="640" height="268"
+  data-setup='{}'>
+    <source src="rtmp://${pageContext.request.getServerName()}/vod/big_buck_bunny.mp4" type='rtmp/mp4'>
+  </video>
+
+  <script>
+  </script>
+Our battle tested, scablable and performance tweaked Red5 Media Server is perfect for gaming development or streaming media delivery.
+						It features Ubuntu 14.04, Java 1.7, and embedded tomcat setup for easy access to Red5 web interface via port 5080. The above video is H264 encoded and streaming via RTMP via your new Red5 Media Server using video.js.</p>
 						<ol>
 							<li>Login via ssh with the key you used to start your instance and username 'ubuntu' i.e. 
-							<br/><code>ssh -i mykey.pem ubuntu@<?=$_SERVER['HTTP_HOST']?></code>
+							<br/><code>ssh -i mykey.pem ubuntu@${pageContext.request.getServerName()}</code>
 							</li>
-							<li>Run the following command: <br/><code>sudo elx -s</code>
-							<br/>This will create a user you can use to login to Webmin with, as well as update your root MySQL password</li>
+							<li>Interact with the Red5 upstart service:<br/><code>sudo service red5 status|start|stop</code>
+							<br/>This will work directly with the red5 service.</li>
 						</ol>
-<strong>To enable the Jenkins web site, just run:</strong>
-<ul>
-<li><code>sudo a2dissite 000-default</code></li>
-<li><code>sudo a2ensite jenkins</code></li>
-<li><code>sudo service apache2 reload</code></li>
-</ul>
-Your Jenkins site will then be available at this same URL.
-						<br/><br/>
 						<ul class="actions">
-							<li><a href="mailto:support@elastrix.io?subject=Jenkins Support Request" target="_blank" class="button">Get Support</a></li>
-							<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/Home" target="_blank" class="button">Jenkins WiKi</a></li>
-							<li><a href="info.php" target="_blank" class="button">PHP Info</a></li>
-							<li><a href="https://<?=$_SERVER['HTTP_HOST'];?>:10000" target="_blank" class="button">Webmin</a></li>
+							<li><a href="mailto:support@elastrix.io?subject=Red5 Support Request" target="_blank" class="button">Get Support</a></li>
+							<li><a href="https://github.com/Red5/red5-server/wiki/General-How-to" target="_blank" class="button">Red5 Wiki</a></li>
+							<li><a href="http://${pageContext.request.getServerName()}:5080" target="_blank" class="button">Red5 Root</a></li>
 						</ul>
 					</section>
 
 					<section id="two">
-						<h2>Apache2</h2>
-						<div class="row">
-							<article>
-								<p>
-									Ubuntu's Apache2 default configuration is different from the upstream default configuration, and split into several files optimized for interaction with Ubuntu tools. The configuration system is fully documented in /usr/share/doc/apache2/README.Debian.gz. Refer to this for the full documentation. Documentation for the web server itself can be found by accessing the manual if the apache2-doc package was installed on this server.
-									The configuration layout for an Apache2 web server installation on Ubuntu systems is as follows:
-								</p>
-								<pre>
-/etc/apache2/
-|-- apache2.conf
-|       `--  ports.conf
-|-- mods-enabled
-|       |-- *.load
-|       `-- *.conf
-|-- conf-enabled
-|       `-- *.conf
-|-- sites-enabled
-|       `-- *.conf
-								</pre>
-								<p>        
-									<strong>apache2.conf</strong> is the main configuration file. It puts the pieces together by including all remaining configuration files when starting up the web server.
-									<br/>
-									<strong>ports.conf</strong> is always included from the main configuration file. It is used to determine the listening ports for incoming connections, and this file can be customized anytime.
-									<br/>
-									Configuration files in the <strong>mods-enabled/, conf-enabled/ and sites-enabled/</strong> directories contain particular configuration snippets which manage modules, global configuration fragments, or virtual host configurations, respectively.
-									They are activated by symlinking available configuration files from their respective *-available/ counterparts. These should be managed by using our helpers a2enmod, a2dismod, a2ensite, a2dissite, and a2enconf, a2disconf . See their respective man pages for detailed information.
-									<br/>
-									The binary is called <strong>apache2</strong>. Due to the use of environment variables, in the default configuration, apache2 needs to be started/stopped with <strong>/etc/init.d/apache2</strong> or <strong>apache2ctl</strong>. 
-								</p>
-							</article>
-						</div>
-					</section>
-
-<section id="three">
 						<h2>More Apps</h2>
 						<div class="row">
 							<article class="3u 12u$(xsmall) work-item">
