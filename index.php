@@ -23,8 +23,8 @@
 						<img src="http://elastrix.io/content/images/2015/09/elastrix-logo-white.png" style="width:98%;"/>
 					</a>
 					</h1>
-				<h1><strong>LAMP</strong> with Webmin<br />
-				Ubuntu 14.04, Apache2, MySQL 5.5 and PHP 5<br/>
+				<h1><strong>MongoDB <br />
+				Ubuntu 14.04, NGINX, MongoDB 3 and MongoClient<br/>
 				with Webmin included for administration.<br />
 				crafted by <a href="http://elastrix.io" target="_blank">Elastrix</a>.</h1>
 			</header>
@@ -37,66 +37,26 @@
 						<header class="major">
 							<h2>Congratulations! Your App is ready to go!</h2>
 						</header>
-						<p>Our battle tested, scablable and performance tweaked LAMP stack is perfect for development all the way to product ready 
-						applications and websites. 
-						It features Ubuntu 14.04, Apache2 with mod_rewrite and file upload limit increases as well as sendmail for sending email from your instance. 
-						It also includes MySQL 5 and PHP5 with Webmin pre-installed and configured for full service and easy server administration from your browser.</p>
-						<ol>
+						
+<p>A full featured production ready MongoDB cloud server with Meteor and MongoClient, all monitored with Monit, and manageable with Webmin.</p>
+<ul>
 							<li>Login via ssh with the key you used to start your instance and username 'ubuntu' i.e. 
 							<br/><code>ssh -i mykey.pem ubuntu@<?=$_SERVER['HTTP_HOST']?></code>
 							</li>
-							<li>Run the following command: <br/><code>sudo elx -s</code>
-							<br/>This will create a user you can use to login to Webmin with, as well as update your root MySQL password</li>
-						</ol>
+							<li>Run the following command to create your webmin user: <br/><code>sudo elx -u</code>
+							</li>
+<li>Update the Monit HTTP user/pass:<br/><code>sudo elx -n web</code></li>
+<li>Start/Stop/Restart MongoClient:<br/><code>sudo service mongoclient start | stop | status | restart</code></li>
+						</ul>
 						<p>That's it! Your instance is ready to use!
-						You can use the elx command to re-run setup or control various aspects of your instance:</p>
-						<ul>
-							<li><code>sudo elx -u [ update webmin user ]</code></li>
-							<li><code>sudo elx -m [ update mysql root pass ]</code></li>
-							<li><code>sudo elx -a [ optimize apache ]</code></li>
-						<ul>
-						<br/><br/>
 						<ul class="actions">
-							<li><a href="mailto:support@elastrix.io?subject=LAMP Webmin Support Request" target="_blank" class="button">Get Support</a></li>
-							<li><a href="http://www.elastrix.io/lamp-webmin" target="_blank" class="button">Documentation</a></li>
-							<li><a href="info.php" target="_blank" class="button">PHP Info</a></li>
+							<li><a href="http://www.elastrix.io/mongodb" target="_blank" class="button">Documentation</a></li>
+							<li><a href="http://<?=$_SERVER['HTTP_HOST']?>:8080" target="_blank" class="button">MongoClient</a></li>
 							<li><a href="https://<?=$_SERVER['HTTP_HOST'];?>:10000" target="_blank" class="button">Webmin</a></li>
+<li><a target="_blank" href="http://<?=$_SERVER['HTTP_HOST']?>:2812" class="button">Monit</a></li>
 						</ul>
 					</section>
 
-					<section id="two">
-						<h2>Apache2</h2>
-						<div class="row">
-							<article>
-								<p>
-									Ubuntu's Apache2 default configuration is different from the upstream default configuration, and split into several files optimized for interaction with Ubuntu tools. The configuration system is fully documented in /usr/share/doc/apache2/README.Debian.gz. Refer to this for the full documentation. Documentation for the web server itself can be found by accessing the manual if the apache2-doc package was installed on this server.
-									The configuration layout for an Apache2 web server installation on Ubuntu systems is as follows:
-								</p>
-								<pre>
-/etc/apache2/
-|-- apache2.conf
-|       `--  ports.conf
-|-- mods-enabled
-|       |-- *.load
-|       `-- *.conf
-|-- conf-enabled
-|       `-- *.conf
-|-- sites-enabled
-|       `-- *.conf
-								</pre>
-								<p>        
-									<strong>apache2.conf</strong> is the main configuration file. It puts the pieces together by including all remaining configuration files when starting up the web server.
-									<br/>
-									<strong>ports.conf</strong> is always included from the main configuration file. It is used to determine the listening ports for incoming connections, and this file can be customized anytime.
-									<br/>
-									Configuration files in the <strong>mods-enabled/, conf-enabled/ and sites-enabled/</strong> directories contain particular configuration snippets which manage modules, global configuration fragments, or virtual host configurations, respectively.
-									They are activated by symlinking available configuration files from their respective *-available/ counterparts. These should be managed by using our helpers a2enmod, a2dismod, a2ensite, a2dissite, and a2enconf, a2disconf . See their respective man pages for detailed information.
-									<br/>
-									The binary is called <strong>apache2</strong>. Due to the use of environment variables, in the default configuration, apache2 needs to be started/stopped with <strong>/etc/init.d/apache2</strong> or <strong>apache2ctl</strong>. 
-								</p>
-							</article>
-						</div>
-					</section>
 
 <section id="three">
 						<h2>More Apps</h2>
